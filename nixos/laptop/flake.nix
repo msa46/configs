@@ -29,13 +29,12 @@
 		system = "x86_64-linux";
 		modules = [
 		./configuration.nix
-		nvf.homeManagerModules.default
 		home-manager.nixosModules.home-manager
 		{
 			home-manager.useGlobalPkgs = true;
 			home-manager.useUserPackages = true;
-			home-manager.users.hq= ./home.nix;
-
+			home-manager.users.hq= import ./home.nix;
+			home-manager.extraSpecialArgs = {inherit inputs;};
             		# Optionally, use home-manager.extraSpecialArgs to pass
             		# arguments to home.nix
 		}

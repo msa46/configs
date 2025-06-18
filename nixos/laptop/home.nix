@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   	# Home Manager needs a bit of information about you and the
@@ -6,7 +6,7 @@
   	home.username = "hq";
   	home.homeDirectory = "/home/hq";
 	imports = [
-		../modules/home-manager/common.nix
+		 (import ../modules/home-manager/common.nix {inherit config pkgs inputs;})
 	];
   	# This value determines the Home Manager release that your
   	# configuration is compatible with. This helps avoid breakage
