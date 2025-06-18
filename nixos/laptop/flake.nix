@@ -23,29 +23,26 @@
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
 
     packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-    nixosConfigurations = {
-	hq = nixpkgs.lib.nixosSystem{
+    nixosConfigurations.hq = nixpkgs.lib.nixosSystem {
 		specialArgs = { inherit inputs; };
 		system = "x86_64-linux";
 		modules = [
 		./configuration.nix
+		nvf.homeManagerModules.default
 		home-manager.nixosModules.home-manager
-		{
-			home-manager.useGlobalPkgs = true;
-			home-manager.useUserPackages = true;
-			home-manager.extraSpecialArgs = { inherit inputs; };
-			home-manager.users.hq= {
-				 imports = [ 
-					./home.nix
-					# inputs.nvf.homeManagerModules.default 	 
-					];
-			};
             		# Optionally, use home-manager.extraSpecialArgs to pass
             		# arguments to home.nix
-		}
 		];	
 	};
+    homeConfigurations.hq = home-manager.lib.homeManagerConfiguration {
+	pkgs = nixpkgs.legacyPackages.x86_64-linux;
+	specialArgs = { inherit inputs; };
+	modules = [
+		./home.nix
+	];
     };
 
   };
+
 }
+

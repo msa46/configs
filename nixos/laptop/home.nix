@@ -6,8 +6,8 @@
   	home.username = "hq";
   	home.homeDirectory = "/home/hq";
 	imports = [
-		 (import ../modules/home-manager/common.nix {inherit inputs pkgs;})
-		 inputs.nvf.homeManagerModules.default 
+		 inputs.nvf.homeManagerModules.default
+		 (import ../modules/home-manager/common.nix {inherit config inputs pkgs;})
 	];
   	# This value determines the Home Manager release that your
   	# configuration is compatible with. This helps avoid breakage
