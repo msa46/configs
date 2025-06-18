@@ -103,12 +103,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     pkgs.wget
-     pkgs.git
-     pkgs.curl
-     inputs.zen-browser.packages.${pkgs.system}.default
+     wget
+     git
+     curl
+     inputs.zen-browser.packages.${system}.default
+     inputs.home-manager.packages.${system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
