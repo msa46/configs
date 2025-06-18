@@ -6,7 +6,7 @@
   	home.username = "hq";
   	home.homeDirectory = "/home/hq";
 	imports = [
-		 inputs.nvf.homeManagerModules.default
+		 # inputs.nvf.homeManagerModules.default
 		 (import ../modules/home-manager/common.nix {inherit config inputs pkgs;})
 	];
   	# This value determines the Home Manager release that your
