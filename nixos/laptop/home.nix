@@ -6,7 +6,7 @@
   	home.username = "hq";
   	home.homeDirectory = "/home/hq";
 	imports = [
-		../modules/home-modules/common.nix
+		../modules/home-manager/common.nix
 	];
   	# This value determines the Home Manager release that your
   	# configuration is compatible with. This helps avoid breakage
