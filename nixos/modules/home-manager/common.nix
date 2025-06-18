@@ -1,9 +1,9 @@
-{ config, inputs, pkgs,... }:
+{ config, pkgs,... }:
 
 {
-  imports = [
-    inputs.nvf.homeManagerModules.default
-  ];
+  #imports = [
+  #  inputs.nvf.homeManagerModules.default
+  #];
   
   programs.git = {
     enable = true;

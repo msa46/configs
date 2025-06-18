@@ -119,7 +119,10 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  home-manager.users.hq  = import ./home.nix;
+  home-manager  = {
+	users.hq = import ./home.nix;
+	sharedModules = [ inputs.nvf.homeManagerModules.default ];
+  };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
