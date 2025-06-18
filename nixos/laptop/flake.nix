@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    	nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
       	zen-browser = {
     		url = "github:0xc000022070/zen-browser-flake";
@@ -14,10 +14,11 @@
 		url = "github:nix-community/home-manager";
     		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	nvf.url = "github:notashelf/nvf";
 	
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager,  ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nvf, ... }: {
 
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
 
@@ -28,6 +29,7 @@
 		system = "x86_64-linux";
 		modules = [
 		./configuration.nix
+		nvf.homeManagerModules.default
 		home-manager.nixosModules.home-manager
 		{
 			home-manager.useGlobalPkgs = true;
