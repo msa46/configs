@@ -1,9 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
-	imports = [
-    		inputs.nvf.homeManagerModules.default
-  	];
+	# imports = [
+    	# 	inputs.nvf.homeManagerModules.default
+  	# ];
   	programs.git = {
     		enable = true;
     		userName = "Mohammad Sanaye Abbasi";
