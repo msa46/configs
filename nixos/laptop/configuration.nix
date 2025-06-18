@@ -119,7 +119,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
+  home-manager.users.hq  = import ./home.nix;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
